@@ -4,5 +4,6 @@
     ) }}
 
 select  Customers.customer_id, Orders.OrderID, Orders.Quantity, Orders.Status, Orders.DateTime
+        , {{ generatefullname('first_name', 'last_name') }} AS FullName 
 from    {{ source('Retail', 'Customers') }} Customers
     INNER JOIN {{ source('Retail', 'Orders') }} Orders On Customers.customer_id = Orders.CustomerID

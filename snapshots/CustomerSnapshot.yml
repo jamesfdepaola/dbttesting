@@ -1,0 +1,31 @@
+snapshots:
+  - name: CustomerSnapshot
+    relation: source('Retail', 'Customers')
+    config:
+      schema: "Retail"
+      unique_key: "customer_id"
+      strategy: "timestamp"
+      updated_at: "modified"
+
+  - name: ProductSnapshot
+    relation: source('Retail', 'Products')
+    config:
+      schema: "Retail"
+      unique_key: "product_id"
+      strategy: "check"
+      check_cols:
+        - price
+        - category
+      hard_deletes: invalidate
+
+  - name: ProductSnapshotNew
+    relation: source('Retail', 'Products')
+    config:
+      schema: "Retail"
+      unique_key: "product_id"
+      strategy: "check"
+      check_cols:
+        - price
+        - category
+      hard_deletes: new_record
+      
