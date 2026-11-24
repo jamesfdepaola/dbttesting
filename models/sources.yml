@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: Retail
+    tables:
+      - name: Customers
+      - name: Orders
+      - name: Invoices
+      - name: Products
