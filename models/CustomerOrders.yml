@@ -1,0 +1,21 @@
+version: 2
+
+models:
+    - name: CustomerOrders
+      description: "orders by customer"
+      columns:
+          - name: customer_id
+            description: "The primary key for this table"
+            tests:
+                - not_null
+          - name: OrderID
+            description: "The primary key for the order"
+            tests:
+                - not_null
+                - unique
+          - name: Status
+            description: "order status"
+            data_tests:
+              - accepted_values:
+                  arguments: # Required in newer dbt versions; omit if using dbt < 1.8
+                    values: ['Pending', 'Cancelled', 'Delivered', 'Shipped']

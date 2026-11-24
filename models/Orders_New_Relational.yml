@@ -1,0 +1,13 @@
+version: 2
+
+models:
+    - name: Orders_New_Relational
+      description: "new orders"
+      columns:
+          - name: CustomerID
+            description: "The foregin key for this table"
+            data_tests:
+              - relationships:
+                  arguments:
+                    to: source('Retail', 'Customers')
+                    field: customer_id
