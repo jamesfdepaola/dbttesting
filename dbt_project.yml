@@ -46,3 +46,6 @@ models:
 seeds:
   my_new_project:
     +schema: Retail
+
+on-run-end:
+  - "{{ AuditFailHook(results) }}"
